@@ -31,7 +31,7 @@ function Get-GitCheckoutBranch { & git checkout -b $args }
 New-Alias -Name gchb -Value Get-GitCheckoutBranch
 
 function Get-GitCommit { & git commit -m $args }
-New-Alias -Name gcm -Value Get-GitCommit
+New-Alias -Name gcmm -Value Get-GitCommit
 
 function Get-PullOrigin { & git pull origin $args }
 New-Alias -Name gpdn -Value Get-PullOrigin
@@ -50,5 +50,8 @@ New-Alias -Name gms -Value Get-GitMergeSquash
 
 function Get-GitPushForceLease { & git push origin HEAD --force-with-lease $args }
 New-Alias -Name gpupfl -Value Get-GitPushForceLease
+
+function Get-GitDiff { & git diff $args }
+New-Alias -Name gd -Value Get-GitDiff   
 
 
