@@ -1,3 +1,8 @@
+﻿
+Import-Module 'C:\tools\poshgit\dahlbyk-posh-git-9bda399\src\posh-git.psd1'
+
+$p = "C:\projects"
+
 function Get-GitStatus { & git status $args }
 New-Alias -Name gs -Value Get-GitStatus
 
@@ -45,3 +50,5 @@ New-Alias -Name gms -Value Get-GitMergeSquash
 
 function Get-GitPushForceLease { & git push origin HEAD --force-with-lease $args }
 New-Alias -Name gpupfl -Value Get-GitPushForceLease
+
+
