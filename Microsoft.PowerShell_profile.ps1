@@ -3,6 +3,8 @@ Import-Module 'C:\tools\poshgit\dahlbyk-posh-git-9bda399\src\posh-git.psd1'
 
 $p = "C:\projects"
 
+$splunk = "C:\projects\splunk"
+
 function Get-GitStatus { & git status $args }
 New-Alias -Name gs -Value Get-GitStatus
 
@@ -52,6 +54,10 @@ function Get-GitPushForceLease { & git push origin HEAD --force-with-lease $args
 New-Alias -Name gpupfl -Value Get-GitPushForceLease
 
 function Get-GitDiff { & git diff $args }
-New-Alias -Name gd -Value Get-GitDiff   
+New-Alias -Name gd -Value Get-GitDiff
 
+function DockerStopAllContainers { & docker stop $(docker ps -aq) }
+New-Alias -Name dsac -Value DockerStopAllContainers
 
+function DockerRemoveAllContainers { & docker rm $(docker ps -aq) }
+New-Alias -Name drac -Value DockerRemoveAllContainers         
