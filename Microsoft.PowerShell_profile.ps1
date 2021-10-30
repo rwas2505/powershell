@@ -1,9 +1,7 @@
-﻿
+
 Import-Module 'C:\tools\poshgit\dahlbyk-posh-git-9bda399\src\posh-git.psd1'
 
 $p = "C:\projects"
-
-$splunk = "C:\projects\splunk"
 
 function Get-GitStatus { & git status $args }
 New-Alias -Name gs -Value Get-GitStatus
@@ -35,6 +33,9 @@ New-Alias -Name gchb -Value Get-GitCheckoutBranch
 function Get-GitCommit { & git commit -m $args }
 New-Alias -Name gcmm -Value Get-GitCommit
 
+function Get-GitCommitAmendNoEdit { & git commit --amend --no-edit }
+New-Alias -Name gcmane -Value Get-GitCommitAmendNoEdit
+
 function Get-PullOrigin { & git pull origin $args }
 New-Alias -Name gpdn -Value Get-PullOrigin
 
@@ -60,4 +61,8 @@ function DockerStopAllContainers { & docker stop $(docker ps -aq) }
 New-Alias -Name dsac -Value DockerStopAllContainers
 
 function DockerRemoveAllContainers { & docker rm $(docker ps -aq) }
-New-Alias -Name drac -Value DockerRemoveAllContainers         
+New-Alias -Name drac -Value DockerRemoveAllContainers
+
+function GitDeleteNonMasterMainDevelop { & git branch --format '%(refname:lstrip=2)' | Where-Object { ($_ -ne 'master') -and ($_ -ne 'main') -and ($_ -ne 'develop') } | ForEach-Object { git branch -d $_ }}         
+New-Alias -Name gbdall -Value GitDeleteNonMasterMainDevelop
+
