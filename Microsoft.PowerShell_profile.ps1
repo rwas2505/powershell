@@ -60,6 +60,9 @@ New-Alias -Name gd -Value Get-GitDiff
 function DockerStopAllContainers { & docker stop $(docker ps -aq) }
 New-Alias -Name dsac -Value DockerStopAllContainers
 
+function DockerRemoveAllImages { & docker image prune -a }
+New-Alias -Name drai -Value DockerRemoveAllImages 
+
 function DockerRemoveAllContainers { & docker rm $(docker ps -aq) }
 New-Alias -Name drac -Value DockerRemoveAllContainers
 
