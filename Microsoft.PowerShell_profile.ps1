@@ -66,6 +66,6 @@ New-Alias -Name drai -Value DockerRemoveAllImages
 function DockerRemoveAllContainers { & docker rm $(docker ps -aq) }
 New-Alias -Name drac -Value DockerRemoveAllContainers
 
-function GitDeleteNonMasterMainDevelop { & git branch --format '%(refname:lstrip=2)' | Where-Object { ($_ -ne 'master') -and ($_ -ne 'main') -and ($_ -ne 'develop') } | ForEach-Object { git branch -d $_ }}         
+function GitDeleteNonMasterMainDevelop { & git branch --format '%(refname:lstrip=2)' | Where-Object { ($_ -ne 'master') -and ($_ -ne 'main') -and ($_ -ne 'develop') } | ForEach-Object { git branch -D $_ }}         
 New-Alias -Name gbdall -Value GitDeleteNonMasterMainDevelop
 
